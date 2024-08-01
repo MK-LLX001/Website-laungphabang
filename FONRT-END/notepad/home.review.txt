@@ -1,0 +1,284 @@
+import React from "react";
+import { BsArrowLeftShort } from "react-icons/bs";
+import { BsArrowRightShort } from "react-icons/bs";
+import { BsDot } from "react-icons/bs";
+import "./css/homeReview.scss";
+// importImage ********
+import img from "../imgs/Kuangsi-Waterfalls/ks1.jpg";
+import img2 from "../imgs/Kuangsi-Waterfalls/ks5.jpg";
+import img3 from "../imgs/Kuangsi-Waterfalls/ks6.jpg";
+import img4 from "../imgs/Kuangsi-Waterfalls//ks3.jpg";
+//  ส้่งตวแปลมาเกับรูบเอาไปแมดกับฟังชั้น
+const Data = [
+  {
+    id: 1,
+    imgSrc: img,
+    destTitle: "Tadkaugsi",
+    location: "Laungphabang",
+    grade: "CULTURAL RELAX",
+  },
+  {
+    id: 2,
+    imgSrc: img2,
+    destTitle: "Tadkaugsi",
+    location: "Laungphabang",
+    grade: "CULTURAL RELAX",
+  },
+  {
+    id: 3,
+    imgSrc: img3,
+    destTitle: "Tadkaugsi",
+    location: "Laungphabang",
+    grade: "CULTURAL RELAX",
+  },
+  {
+    id: 4,
+    imgSrc: img4,
+    destTitle: "Tadkaugsi",
+    location: "Laungphabang",
+    grade: "CULTURAL RELAX",
+  },
+];
+
+const Review = () => {
+  return (
+    <section className="popular section container">
+      <div className="secContainer">
+        {/* header popora */}
+        <div className="secHeader flex">
+          <div className="textDiv">
+            <h2 className="secTitle">Popolar Destination</h2>
+            <p>
+              From historial cities to natrual specteculars, come see the best
+              of the world!
+            </p>
+          </div>
+          <div className="iconsDiv flex ">
+            <BsArrowLeftShort className="icon leftIcon" />
+            <BsArrowRightShort className="icon" />
+          </div>
+        </div>
+
+        <div className="mainConten grid  ">
+          {Data.map(({id,imgSrc,destTitle,location,grade}) => {
+            return (
+              <div className="singleDestination ">
+
+                <div className="destImage">
+                  <img src={imgSrc} alt="Image title" />
+
+                  <div className="overlayInfo">
+                    <h3>{destTitle}</h3>
+                    <p>{location}</p>
+                    <BsArrowRightShort className="icon" />
+                  </div>
+                </div>
+
+                <div className="destFooter">
+                  <div className="number">
+                    0{id}
+                    </div>
+
+                  <div className="destText flex">
+                    <h6>{location}</h6>
+                    <span className="flex">
+                      <span className="dot">
+                        <BsDot className="icon" />
+                      </span>
+                      Dot
+                    </span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+
+        </div>
+        
+      </div>
+    </section>
+  );
+};
+
+export default Review;
+///////////////////////////////////////////////// scss
+:root {
+  --PrimaryColor: #186f65;
+  --HoverColor: #ff4081;
+  --WhiteColor: #fff;
+  --BlackColor: #000;
+  --TextColor: hsl(240, 1%, 48%);
+  --WhiteColorDeam: hsl(0, 0%, 93%);
+  --Dark-Purple: #b2533e;
+  --Pale-Orange: #fce09b;
+  --Light-Pink: #b5cb99;
+}
+.popular {
+  padding-top: 7rem;
+  .secHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    .textDiv {
+      .secTitle {
+        color: var(--BlackColor);
+        line-height: 1.5rem;
+        padding-bottom: 0.5rem;
+      }
+      p {
+        font-size: 13px;
+        color: var(--TextColor);
+        font-weight: 500;
+      }
+    }
+    .iconsDiv {
+      gap: 0.5rem;
+      .icon {
+        padding: 0.5rem;
+        background: var(--WhiteColorDeam);
+        border-radius: 50%;
+        font-size: 2.5rem;
+        &:hover {
+          background: var(--BlackColor);
+          color: var(--WhiteColor);
+        }
+      }
+      .leftIcon {
+        background: var(--BlackColor);
+        color: var(--WhiteColor);
+        &:hover {
+          background: var(--TextColor);
+          color: var(--BlackColor);
+        }
+      }
+    }
+  }
+
+  .mainConten {
+    padding: 2rem 0;
+    gap: 1rem;
+
+    .singleDestination {
+      overflow: hidden;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.334);
+
+      .destImage {
+        height: 300px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+
+        .overlayInfo {
+          position: absolute;
+          display: flex;
+          align-items: flex-start;
+          padding: 0;
+          // padding: 1rem 1.5rem;
+          justify-content: center;
+          flex-direction: column;
+          background: linear-gradient(
+            rgba(0, 0, 0, 0.846),
+            rgba(0, 0, 0, 0.759)
+          );
+          bottom: 0;
+          width: 100%;
+          // height: 100%;
+          height: 0;
+          overflow: hidden;
+
+          h3 {
+            color: var(--WhiteColor);
+            font-weight: 600;
+          }
+          p {
+            color: var(--WhiteColor);
+            opacity: 0.7;
+            font-size: 13px;
+          }
+
+          .icon {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            padding: 0.5rem;
+            background: var(--HoverColor);
+            font-size: 2.5rem;
+            border-radius: 50%;
+            color: var(--WhiteColor);
+            border: 1px solid transparent;
+            transition: 0.3 ease;
+
+            &:hover {
+              background: var(--BlackColor);
+              border: 1px solid var(--PrimaryColor);
+              color: var(--PrimaryColor);
+            }
+          }
+        }
+      }
+
+      .destFooter {
+        padding: 1rem;
+    
+        .number {
+          font-size: 2rem;
+          font-weight: 700;
+          color: var(--BlackColor);
+          position: relative;
+          width: max-content;
+    
+          &::after {
+            content: "";
+            position: absolute;
+            background: var(--PrimaryColor);
+            top: 45%;
+            right: -150%;
+            height: 5px;
+            width: 45px;
+            border-radius: 1rem;
+          }
+        }
+        .destText {
+          justify-content: space-between;
+    
+          h6{
+            color: var(--BlackColor);
+            font-size: 16px;
+          }
+    
+          .flex {
+            font-size: 16px;
+            font-weight: 600;
+            align-items: flex-start;
+            transform: translateY(5px);
+    
+            .icon {
+              color: var(--PrimaryColor);
+              font-size: large;
+            }
+          }
+        }
+      }
+    
+      &:hover {
+        .overlayInfo {
+          overflow: visible;
+          padding: 1rem 1.5rem;
+          height: 100%;
+        }
+      }
+
+
+    }
+  }
+
+  
+}
+

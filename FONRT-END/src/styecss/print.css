@@ -1,0 +1,16 @@
+/* print.css */
+@media print {
+  @page {
+    size: landscape;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* เพิ่มสไตล์ให้ข้อมูลในคอลัมน์ Location, Convenience, และ Description ไม่ตัดขึ้น */
+  .truncate-max-w-xs {
+    max-width: none !important;
+  }
+}
